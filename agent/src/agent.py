@@ -6,7 +6,6 @@ from .tailer import tail_file
 
 logs = config.logs()
 
-
 def start():
     # 1. Start the sender worker thread
     # batch_interval=2 means it flushes the queue every 2 seconds
