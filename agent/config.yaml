@@ -1,9 +1,10 @@
 agent:
   id: "agent-1"
   name: "Agent One"
+  stream: "srv-logs"
 
 backend:
-  url: "BACKEND_URL"
+  url: "http://localhost:8000/api/test"
   timeout_seconds: 5
   batch_size: 100
   flush_interval_seconds: 2
@@ -13,6 +14,8 @@ logs:
     path: "/var/log/apache2/access.log"
   - source: "syslog"
     path: "/var/log/installer/syslog"
+  - source: "syslog"
+    path: "/var/log/apache2/access.log"
 
 buffer:
   type: "memory"

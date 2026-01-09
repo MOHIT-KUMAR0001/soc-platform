@@ -1,6 +1,5 @@
-from my_agent import start
+from src import start
 
 if __name__ == "__main__":
     start()
     
-
