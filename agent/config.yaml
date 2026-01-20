@@ -12,11 +12,7 @@ backend:
 logs:
   - source: "auth.log"
     path: "/var/log/apache2/access.log"
-  - source: "syslog"
-    path: "/var/log/installer/syslog"
-  - source: "syslog"
-    path: "/var/log/apache2/access.log"
-
+  
 buffer:
   type: "memory"
   max_events: 5000

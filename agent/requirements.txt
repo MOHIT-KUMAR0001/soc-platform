@@ -1,3 +1,5 @@
 pyyaml
 requests
 colorama
+httpx
+msgpack
