@@ -27,6 +27,6 @@ def stream_model(batch : list[dict]):
         "send_at": datetime.now().isoformat() + "Z",
         "events": batch,
     }
-        
+        print(len(stream['events']))
         return msgpack.packb(stream, use_bin_type=True)
 

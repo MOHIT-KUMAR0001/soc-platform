@@ -4,7 +4,7 @@ agent:
   stream: "srv-logs"
 
 backend:
-  url: "http://localhost:8000/api/test"
+  url: "http://localhost:8080/api/v1/ingest"
   timeout_seconds: 5
   batch_size: 100
   flush_interval_seconds: 2

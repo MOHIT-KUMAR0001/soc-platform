@@ -27,7 +27,6 @@ def sender_worker(interval: str):
 async def send_batch(batch: str):
     log.info("sending log streams...")
     stream = stream_model(batch)
-
     headers = {
         "Content-Type": "application/msgpack",
         "X-API-KEY": "agent-secret"
