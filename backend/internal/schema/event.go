@@ -1,6 +1,6 @@
 package schema
 
-type signal struct {
+type Signal struct {
 	Type string
 	Data map[string]any
 }
@@ -13,7 +13,8 @@ type Event struct {
 	Timestamp string `msgpack:"timestamp" json:"timestamp"`
 	Raw       string `msgpack:"raw" json:"raw"`
 
-	Tags    map[string]struct{}
-	Signals []signal
+	Fields   map[string]string
+	Tags     map[string]struct{}
+	ParseLog *LogEntry
+	Signals  []Signal
 }
-

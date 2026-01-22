@@ -1,6 +1,7 @@
 package api
 
 import (
+	"backend/internal/ingest"
 	"backend/internal/schema"
 	"fmt"
 	"io"
@@ -24,6 +25,17 @@ func App(ctx *gin.Context) {
 		fmt.Println(err)
 		ctx.JSON(http.StatusBadRequest, gin.H{"msg": "error"})
 		return
+	}
+
+	pipeline := ingest.Pipeline{
+		Processors: []ingest.Processor{
+			&ingest.RawLogParser{},
+			&ingest.FailedLoginDetector{},
+		},
+	}
+
+	for _, event := range data.Events {
+		pipeline.Run(&event)
 	}
 
 	ctx.JSON(http.StatusOK, gin.H{

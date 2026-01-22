@@ -30,5 +30,6 @@ type Element struct {
 }
 
 type ScanIP struct {
+	IP     string  `json:"ip"`
 	Source Element `json:"source"`
 }

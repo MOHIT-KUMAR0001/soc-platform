@@ -1,6 +1,8 @@
 package ingest
 
-import "backend/internal/schema"
+import (
+	"backend/internal/schema"
+)
 
 type Pipeline struct {
 	Processors []Processor
