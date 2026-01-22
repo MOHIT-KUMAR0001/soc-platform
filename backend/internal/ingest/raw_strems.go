@@ -8,6 +8,7 @@ import (
 )
 
 func ParseRawLog(raw, agentID, hostname string) (schema.LogEntry, error) {
+
 	fmt.Println(raw)
 	// Regex breakdown:
 	// ^(\S+)           -> Source IP
