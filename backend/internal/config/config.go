@@ -8,8 +8,8 @@ import (
 )
 
 type Config struct {
-	Port     string // Exported (Capitalized)
-	Database string // Exported (Capitalized)
+	Port     string
+	Database string
 }
 
 func LoadEnv() *Config {
@@ -20,7 +20,7 @@ func LoadEnv() *Config {
 
 	return &Config{
 		Port:     getenv("PORT", "8000"),
-		Database: getenv("DATABASE", ""),
+		Database: getenv("DATABASE_URL", ""),
 	}
 }
 
