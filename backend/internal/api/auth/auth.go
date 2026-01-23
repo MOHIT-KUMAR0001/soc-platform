@@ -1,15 +1,7 @@
 package auth
 
-import (
-	"backend/internal/database"
+import "github.com/gin-gonic/gin"
 
-	"github.com/gin-gonic/gin"
-)
-
-type apiConfig struct {
-	db *database.Queries
-}
-
-func (db *apiConfig) Auth(ctx *gin.Context) {
-
+func GenerateApiKey(ctx *gin.Context) {
+	
 }

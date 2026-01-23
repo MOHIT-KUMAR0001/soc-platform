@@ -2,14 +2,9 @@ package router
 
 import (
 	"backend/internal/api"
-	"backend/internal/database"
 
 	"github.com/gin-gonic/gin"
 )
-
-type Apc struct {
-	DB *database.Queries
-}
 
 func AppRouter() *gin.Engine {
 	router := gin.Default()

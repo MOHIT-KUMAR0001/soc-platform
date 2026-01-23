@@ -7,30 +7,42 @@ package database
 
 import (
 	"context"
+	"database/sql"
 
 	"github.com/google/uuid"
 )
 
 const createWorker = `-- name: CreateWorker :one
-INSERT INTO auth_db (id, worker_group, api_key_hash)
-VALUES ($1, $2, $3)
-RETURNING id, worker_group, api_key_hash, created_at
+INSERT INTO auth_db (id, worker_group, api_key_hash,is_disabled,expiry)
+VALUES ($1, $2, $3, $4 , $5)
+RETURNING id, worker_group, api_key_hash, created_at, is_disabled, expiry, updated_at
 `
 
 type CreateWorkerParams struct {
 	ID          uuid.UUID
 	WorkerGroup string
 	ApiKeyHash  string
+	IsDisabled  sql.NullBool
+	Expiry      sql.NullTime
 }
 
 func (q *Queries) CreateWorker(ctx context.Context, arg CreateWorkerParams) (AuthDb, error) {
-	row := q.db.QueryRowContext(ctx, createWorker, arg.ID, arg.WorkerGroup, arg.ApiKeyHash)
+	row := q.db.QueryRowContext(ctx, createWorker,
+		arg.ID,
+		arg.WorkerGroup,
+		arg.ApiKeyHash,
+		arg.IsDisabled,
+		arg.Expiry,
+	)
 	var i AuthDb
 	err := row.Scan(
 		&i.ID,
 		&i.WorkerGroup,
 		&i.ApiKeyHash,
 		&i.CreatedAt,
+		&i.IsDisabled,
+		&i.Expiry,
+		&i.UpdatedAt,
 	)
 	return i, err
 }

@@ -15,4 +15,19 @@ type AuthDb struct {
 	WorkerGroup string
 	ApiKeyHash  string
 	CreatedAt   sql.NullTime
+	IsDisabled  sql.NullBool
+	Expiry      sql.NullTime
+	UpdatedAt   sql.NullTime
+}
+
+type Organization struct {
+	ID           uuid.UUID
+	OrgName      string
+	RegNumber    sql.NullString
+	ContactEmail string
+	Website      sql.NullString
+	IsVerified   sql.NullBool
+	IsActive     sql.NullBool
+	CreatedAt    sql.NullTime
+	UpdatedAt    sql.NullTime
 }
